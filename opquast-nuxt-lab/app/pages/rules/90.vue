@@ -1,7 +1,7 @@
 <script setup>
 import { getRuleById } from '~/data/rules'
 
-const ruleId = 88
+const ruleId = 90
 const rule = getRuleById(ruleId)
 const activeTab = ref('preview')
 </script>
@@ -54,20 +54,9 @@ const activeTab = ref('preview')
       <h2 class="text-lg font-semibold tracking-tight text-zinc-100">
         Objectif
       </h2>
-
       <ul class="mt-1 list-disc pl-5 space-y-2 text-sm text-zinc-300">
         <li v-for="o in rule.objectives" :key="o">{{ o }}</li>
       </ul>
-      <ul
-        v-if="Array.isArray(rule.objectives)"
-        class="mt-3 list-disc pl-5 space-y-2 text-sm text-zinc-300"
-      >
-        <li v-for="o in rule.objectives" :key="o">{{ o }}</li>
-      </ul>
-
-      <p v-else class="mt-1 list-disc pl-5 space-y-2 text-sm text-zinc-300">
-        {{ rule.objective }}
-      </p>
     </section>
 
     <!-- Mise en œuvre -->
@@ -75,14 +64,9 @@ const activeTab = ref('preview')
       <h2 class="text-lg font-semibold tracking-tight text-zinc-100">
         Mise en œuvre
       </h2>
-
       <p v-if="rule.implementationIntro" class="mt-3 text-sm text-zinc-400">
         {{ rule.implementationIntro }}
       </p>
-
-      <ul class="mt-1 list-disc pl-5 space-y-2 text-sm text-zinc-300">
-        <li v-for="x in rule.implementation" :key="x">{{ x }}</li>
-      </ul>
     </section>
 
     <!-- Contrôle -->
@@ -90,13 +74,12 @@ const activeTab = ref('preview')
       <h2 class="text-lg font-semibold tracking-tight text-zinc-100">
         Contrôle
       </h2>
-
       <ul class="mt-3 list-disc pl-5 space-y-2 text-sm text-zinc-300">
         <li v-for="c in rule.control" :key="c">{{ c }}</li>
       </ul>
     </section>
 
-    <!-- Screenshots -->
+        <!-- Screenshots -->
     <section class="space-y-4">
       <h2 class="text-lg font-semibold tracking-tight text-zinc-100">
         Screenshots
@@ -159,7 +142,7 @@ const activeTab = ref('preview')
     <!-- Exemples -->
     <section class="space-y-4">
       <h2 class="text-lg font-semibold tracking-tight text-zinc-100">
-        Exemples todo
+        Exemples
       </h2>
 
       <div
@@ -197,56 +180,38 @@ const activeTab = ref('preview')
           <!-- RENDU -->
           <div v-if="activeTab === 'preview'" class="space-y-4">
             <div class="text-sm text-zinc-400">
-              Exemple d'indication d'étape dans un processus de commande
+              Simulation de l'alerte native du navigateur lors d'une tentative
+              de fermeture ou de retour arrière.
             </div>
 
-            <div class="rounded-xl border border-zinc-800 bg-zinc-950 p-5">
-              <!-- Indicateur d'étapes -->
-              <nav aria-label="Progression de la commande" class="mb-6">
-                <ol class="flex items-center gap-2 sm:gap-4 text-sm">
-                  <li class="flex items-center gap-2 text-zinc-500">
-                    <span
-                      class="flex h-6 w-6 items-center justify-center rounded-full border border-zinc-700 text-xs"
-                      >1</span
-                    >
-                    <span class="hidden sm:inline">Panier</span>
-                  </li>
-                  <li class="h-px w-4 bg-zinc-800"></li>
-                  <li
-                    class="flex items-center gap-2 font-medium text-zinc-100"
-                    aria-current="step"
-                  >
-                    <span
-                      class="flex h-6 w-6 items-center justify-center rounded-full bg-zinc-100 text-zinc-950 text-xs font-bold"
-                      >2</span
-                    >
-                    <span>Coordonnées</span>
-                  </li>
-                  <li class="h-px w-4 bg-zinc-800"></li>
-                  <li class="flex items-center gap-2 text-zinc-500">
-                    <span
-                      class="flex h-6 w-6 items-center justify-center rounded-full border border-zinc-700 text-xs"
-                      >3</span
-                    >
-                    <span class="hidden sm:inline">Paiement</span>
-                  </li>
-                </ol>
-              </nav>
-
-              <h3 class="text-lg font-semibold text-zinc-100 mb-4">
-                Étape 2 : Vos coordonnées
-              </h3>
-
-              <form class="space-y-4" @submit.prevent>
-                <div class="space-y-1">
-                  <label class="text-sm text-zinc-400">Nom complet</label>
-                  <input
-                    type="text"
-                    class="w-full rounded-md border border-zinc-800 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 placeholder-zinc-600 focus:border-zinc-600 focus:outline-none"
-                    placeholder="Jean Dupont"
-                  />
+            <div
+              class="rounded-xl border border-zinc-800 bg-zinc-950 p-5 flex flex-col items-center justify-center gap-4"
+            >
+              <div
+                class="bg-white text-black p-4 rounded shadow-lg max-w-sm w-full"
+              >
+                <div class="font-semibold mb-2">Quitter le site ?</div>
+                <div class="text-sm mb-4">
+                  Les modifications que vous avez apportées ne seront peut-être
+                  pas enregistrées.
                 </div>
-              </form>
+                <div class="flex justify-end gap-2">
+                  <button
+                    class="px-3 py-1.5 text-sm border border-gray-300 rounded hover:bg-gray-100"
+                  >
+                    Annuler
+                  </button>
+                  <button
+                    class="px-3 py-1.5 text-sm bg-blue-600 text-white rounded hover:bg-blue-700"
+                  >
+                    Quitter
+                  </button>
+                </div>
+              </div>
+              <p class="text-xs text-zinc-500 italic">
+                (Représentation visuelle de la boîte de dialogue native du
+                navigateur)
+              </p>
             </div>
           </div>
 
@@ -256,54 +221,18 @@ const activeTab = ref('preview')
               class="rounded-xl bg-zinc-950 p-5 overflow-x-auto text-sm text-zinc-100"
             >
 <code>
-&lt;nav aria-label=&quot;Progression de la commande&quot;&gt;
-  &lt;ol class=&quot;flex items-center gap-4 text-sm&quot;&gt;
-    &lt;li class=&quot;text-zinc-500&quot;&gt;1. Panier&lt;/li&gt;
-    &lt;li class=&quot;font-bold text-zinc-100&quot; aria-current=&quot;step&quot;&gt;
-      2. Coordonnées
-    &lt;/li&gt;
-    &lt;li class=&quot;text-zinc-500&quot;&gt;3. Paiement&lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/nav&gt;
-
-&lt;h1&gt;Étape 2 : Vos coordonnées&lt;/h1&gt;
+// JavaScript pour intercepter la fermeture ou le retour arrière
+window.addEventListener('beforeunload', (event) => {
+  // Annule l'événement
+  event.preventDefault();
+  // Chrome nécessite que returnValue soit défini
+  event.returnValue = '';
+});
 </code>
 </pre>
-
-            <p class="mt-3 text-xs text-zinc-500">
-              L'attribut <code>aria-current="step"</code> permet d'indiquer
-              sémantiquement l'étape actuelle aux technologies d'assistance.
-            </p>
           </div>
         </div>
       </div>
     </section>
   </section>
-
-  <section v-else class="rounded-2xl border border-zinc-800 bg-zinc-900/30 p-6">
-    <h1 class="text-lg font-semibold text-zinc-100">Règle introuvable</h1>
-    <p class="mt-2 text-sm text-zinc-400">
-      Vérifiez que la règle existe dans
-      <code class="text-zinc-300">rules.json</code>.
-    </p>
-  </section>
 </template>
-
-<style scoped>
-.scrollbar-light {
-  scrollbar-color: transparent transparent;
-  border-radius: 4px;
-}
-.scrollbar-dark {
-  scrollbar-color: transparent transparent;
-  border-radius: 4px;
-}
-.scrollbar-light:hover {
-  scrollbar-color: #a3a3a3 transparent;
-  border-radius: 4px;
-}
-.scrollbar-dark:hover {
-  scrollbar-color: #4d4d4d transparent;
-  border-radius: 4px;
-}
-</style>

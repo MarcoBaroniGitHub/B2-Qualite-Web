@@ -87,7 +87,10 @@
     "control": [
       "Vérifier, pour chaque page concernée, que la liste des étapes y est indiquée, en règle générale sous forme d'un chemin d'étapes en tête de page ou de formulaire."
     ],
-    "screenshotsSources": []
+    "screenshotsSources": [
+      "https://github.com",
+      "https://ymatch.ynov.com/stage"
+    ]
   },
   {
     "id": 88,
@@ -107,7 +110,9 @@
       "Dans le titre de page",
       "Dans le contenu de page, sous la forme d'une mise en évidence dans le chemin d'étapes en tête de page ou de formulaire, par exemple « Étape 2 – Coordonnées » ou « Étape 4 – Paiement »."
     ],
-    "screenshotsSources": []
+    "screenshotsSources": [
+      "https://github.com"
+    ]
   },
   {
     "id": 89,
@@ -125,7 +130,9 @@
     "control": [
       "Vérifier manuellement la possibilité de revenir à chaque étape précédente du processus."
     ],
-    "screenshotsSources": []
+    "screenshotsSources": [
+      "https://hostinger.com"
+    ]
   },
   {
     "id": 90,
@@ -143,7 +150,9 @@
     "control": [
       "Amorcer la saisie d’un formulaire après la première étape du processus, puis activer le bouton « back » du navigateur."
     ],
-    "screenshotsSources": []
+    "screenshotsSources": [
+      "interface phpmyadmin"
+    ]
   },
   {
     "id": 91,
@@ -161,7 +170,9 @@
     "control": [
       "Utiliser le mécanisme de navigation dans les étapes précédentes de la saisie et vérifier manuellement que les données saisies à chaque étape sont conservées et affichées à nouveau par la suite. "
     ],
-    "screenshotsSources": []
+    "screenshotsSources": [
+      "https://www.netacad.com"
+    ]
   },
   {
     "id": 92,
@@ -182,7 +193,9 @@
       "Vérifier qu’il est possible de copier le contenu de chaque champ y compris les champs de type password (en utilisant le menu contextuel du navigateur ou à défaut un mécanisme propre au formulaire).",
       "Vérifier qu’il est possible de coller un contenu dans chaque champ y compris dans les champs de type password (en utilisant le menu contextuel du navigateur ou à défaut un mécanisme propre au formulaire)."
     ],
-    "screenshotsSources": []
+    "screenshotsSources": [
+      "https://www.netacad.com"
+    ]
   },
   {
     "id": 93,
@@ -206,6 +219,8 @@
       "Vérifier, en examinant le code source à l'aide de Firebug, que chaque série d'éléments option qui devraient être regroupés est balisée avec l'élément optgroup",
       "Vérifier que chaque élément optgroup est doté d'un attribut label associant un libellé pertinent au groupe d'options concern"
     ],
-    "screenshotsSources": []
+    "screenshotsSources": [
+      "https://developer.mozilla.org"
+    ]
   }
 ]
