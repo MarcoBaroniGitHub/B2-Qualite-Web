@@ -1,7 +1,7 @@
 <script setup>
 import { getRuleById } from '~/data/rules'
 
-const ruleId = 88
+const ruleId = 204
 const rule = getRuleById(ruleId)
 const activeTab = ref('preview')
 </script>
@@ -55,9 +55,6 @@ const activeTab = ref('preview')
         Objectif
       </h2>
 
-      <ul class="mt-1 list-disc pl-5 space-y-2 text-sm text-zinc-300">
-        <li v-for="o in rule.objectives" :key="o">{{ o }}</li>
-      </ul>
       <ul
         v-if="Array.isArray(rule.objectives)"
         class="mt-3 list-disc pl-5 space-y-2 text-sm text-zinc-300"
@@ -65,7 +62,7 @@ const activeTab = ref('preview')
         <li v-for="o in rule.objectives" :key="o">{{ o }}</li>
       </ul>
 
-      <p v-else class="mt-1 list-disc pl-5 space-y-2 text-sm text-zinc-300">
+      <p v-else class="mt-1 text-sm text-zinc-300">
         {{ rule.objective }}
       </p>
     </section>

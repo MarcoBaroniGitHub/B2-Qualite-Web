@@ -207,5 +207,166 @@
       "Vérifier que chaque élément optgroup est doté d'un attribut label associant un libellé pertinent au groupe d'options concern"
     ],
     "screenshotsSources": []
+  },
+  
+{
+    "id": 205,
+    "title": "Les mots de passe ne sont pas communiqués en clair.",
+    "authors": [
+      "Azilis ROSELLO"
+    ],
+    "path": "/rules/205",
+    "description": "Le risque qu’un mail puisse être intercepté ou piraté ne peut jamais être complètement écarté. En conséquence, les mots de passe ne doivent jamais circuler en clair, et notamment dans les emails. Certains services peuvent faire exception à la règle en vous proposant des mots de passe temporaires, mais ce n’est pas la solution la plus sûre et cela doit strictement être réservé aux solutions temporaires.",
+    "tags": [
+      "Développement",
+      "Sécurité"
+    ],
+    "objectives": [
+      "Limiter les risques d’interception des mots de passe."
+    ],
+    "implementationIntro": "Lors d'une création de compte ou en cas de demande de réinitialisation ou de rappel du mot passe, ne pas adresser celui-ci à l'utilisateur par mail. Fournir le mot de passe ou sa procédure de réinitialisation uniquement en ligne.",
+    "implementation": [],
+    "control": [
+      "Vérifier qu'aucun mot de passe n'est envoyé à l'utilisateur par mail lors de la création de compte ou en cas de demande de réinitialisation ou de rappel du mot passe."
+    ],
+    "screenshotsSources": []
+  },
+  {
+    "id": 206,
+    "title": "Les entêtes envoyés par le serveur désactivent la détection automatique du type MIME de chaque ressource.",
+    "authors": [
+      "Azilis ROSELLO"
+    ],
+    "path": "/rules/206",
+    "description": "Ne cherchez pas, le mime n’a rien à voir avec Marcel Marceau, c’est simplement un identifiant permettant d’indiquer le format des données sur Internet. La détection automatique de ce format peut rendre possible l’envoi de contenus dangereux vers le poste des utilisateurs. Dans la mesure où cette détection automatique n’est pas vitale, désactivez-la.",
+    "tags": [
+      "Développement",
+      "Sécurité"
+    ],
+    "objectives": [
+      "Réduire les risques de téléchargement d’un contenu dangereux dissimulé."
+    ],
+    "implementationIntro": "Configurer le serveur pour adresser l’en-tête X-Content-Type-Options avec la valeur nosniff.",
+    "implementation": [],
+    "control": [
+      "Vérifier, à l’aide d’un outil d’inspection des en-têtes HTTP, la présence de l’en-tête X-Content-Type-Options avec la valeur nosniff."
+    ],
+    "screenshotsSources": []
+  },
+  {
+    "id": 207,
+    "title": "Le serveur indique le type MIME de chaque ressource.",
+    "authors": [
+      "Azilis ROSELLO"
+    ],
+    "path": "/rules/207",
+    "description": "Le fait d’indiquer le type MIME de chaque ressource permet au navigateur de l’utilisateur de récupérer des contenus correctement identifiés, et de fermer la porte à l’envoi de certains contenus dangereux.",
+    "tags": [
+      "Développement",
+      "Sécurité"
+    ],
+    "objectives": [
+      "Réduire les risques de téléchargement d’un contenu dangereux dissimulé."
+    ],
+    "implementationIntro": "Configurer le serveur pour adresser pour chaque ressource (texte, image, script, etc.) l’en-tête ContentType renseigné avec le type MIME approprié, par exemple :",
+    "implementation": [
+      "text/html;",
+      "application/pdf."
+    ],
+    "control": [
+      "Vérifier, à l’aide d’un outil d’inspection des en-têtes HTTP, la présence de ContentType avec la valeur correspondant au type de ressource."
+    ],
+    "screenshotsSources": []
+  },
+  {
+    "id": 208,
+    "title": "Les informations sur la sécurité des transactions sont indiquées.",
+    "authors": [
+      "Azilis ROSELLO"
+    ],
+    "path": "/rules/208",
+    "description": "Sur Internet, les transactions impliquent généralement le transfert de données sensibles, notamment les numéros de cartes bleues. Pour éviter l’interception de ces données, il importe de les chiffrer. Il est également utile d’informer l’internaute sur les mesures de sécurité.",
+    "tags": [
+      "Editorial",
+      "Sécurité"
+    ],
+    "objectives": [
+      "Contribuer à l'information des utilisateurs sur la sécurisation des échanges de données sensibles."
+    ],
+    "implementationIntro": "Indiquer le mode (SSL, TLS) et le niveau de chiffrement des données (128 ou 256 bits, etc.) sur les pages concernées. Il est aussi possible d'indiquer comment retrouver l'information par le biais de son navigateur dans la mesure où la plupart offrent cette possibilité.",
+    "implementation": [],
+    "control": [
+      "Dans un site proposant d'effectuer des transactions en ligne : contrôler que les informations sur le niveau et le mode de chiffrement des données sont facilement accessibles depuis une page d'aide ou une FAQ, par exemple. Si la procédure indique comment retrouver l'information dans l'interface d'un navigateur, elle doit faire référence aux principaux navigateurs du marché."
+    ],
+    "screenshotsSources": []
+  },
+  {
+    "id": 209,
+    "title": "Le serveur n'envoie pas la liste des fichiers des répertoires n'ayant pas de page d'index.",
+    "authors": [
+      "Azilis ROSELLO"
+    ],
+    "path": "/rules/209",
+    "description": "Lorsqu’un répertoire du site ne contient pas de page d’accueil en front (le répertoire des images du site, par exemple), il arrive qu’il soit possible d’afficher son contenu. Par exemple, en cas de non-respect de cette bonne pratique, une URL comme domaine.com/ doc/ peut permettre l’accès à la liste complète des documents du site, et ce, même s’ils ne sont pas en ligne. C’est embêtant, n’est-ce pas ?",
+    "tags": [
+      "Développement",
+      "Sécurité"
+    ],
+    "objectives": [
+      "Éviter l'affichage de listes de fichiers contenus dans un répertoire.",
+      "Améliorer la sécurité du serveur.",
+      "Limiter les risques d'intrusion."
+    ],
+    "implementationIntro": "Configurer le serveur pour qu'il ne renvoie pas la liste des fichiers présents dans un répertoire. Pour Apache, ajouter par exemple options -–indexes dans le .htaccess.",
+    "implementation": [],
+    "control": [
+      "Contrôler que l'appel à un répertoire sans page par défaut – comme le répertoire des images, des scripts JS ou des feuilles de style – ne renvoie pas la liste du contenu de ce dossier (cette action peut en revanche mener à une page d'erreur ou à une redirection)."
+    ],
+    "screenshotsSources": []
+  },
+  {
+    "id": 210,
+    "title": "Le serveur envoie les informations d'activation de protection cross site scripting.",
+    "authors": [
+      "Azilis ROSELLO"
+    ],
+    "path": "/rules/210",
+    "description": "Le cross-site scripting est une attaque qui consiste à injecter et exécuter un contenu –malveillant – sur une page. Certains navigateurs ont des mécanismes intégrés de filtres pour protéger contre certains types de ces attaques, mécanismes qui peuvent malheureusement être désactivés. Pour empêcher que votre site puisse faire courir ce genre de risques aux utilisateurs, il est donc conseillé de forcer la présence de l’entête de protection et de jouer la sécurité maximale pour le visiteur en bloquant la totalité du contenu de la page.",
+    "tags": [
+      "Développement",
+      "Sécurité"
+    ],
+    "objectives": [
+      "Réduire les risques de téléchargement d’un contenu dangereux dissimulé."
+    ],
+    "implementationIntro": "Configurer le serveur pour l’envoi de l’entête HTTP X-XSS-Protection avec la valeur 1; mode=block.",
+    "implementation": [],
+    "control": [
+      "Vérifier, à l’aide d’un outil d’inspection des en-têtes HTTP, la présence de X-XSS-Protection avec la valeur 1; mode=block."
+    ],
+    "screenshotsSources": []
+  },
+  {
+    "id": 211,
+    "title": "Le serveur envoie les informations indiquant les domaines autorisés à intégrer ses pages dans des cadres.",
+    "authors": [
+      "Azilis ROSELLO"
+    ],
+    "path": "/rules/211",
+    "description": "Les cadres permettent d’afficher des morceaux de pages web à l’intérieur d’une page web. C’est par exemple le cas d’un cadre affichant une publicité dans une autre page web. Votre site peut également être embarqué depuis une autre page, par exemple pour le tester avec certains services. Cela peut aussi être fait avec de mauvaises intentions, notamment pour faire croire à un utilisateur peu prudent qu’il est bien sur votre site : il faut donc empêcher ce risque.",
+    "tags": [
+      "Développement",
+      "Sécurité"
+    ],
+    "objectives": [
+      "Réduire les risques d’utilisation trompeuse du contenu."
+    ],
+    "implementationIntro": "Configurer le serveur pour l’envoi de l’en-tête HTTP X-Frame-Options avec la valeur deny (pour interdire toute inclusion de la page dans un cadre, quel qu’en soit le site) ou sameorigin (pour limiter les inclusions à des cadres du même nom de domaine que la page). La valeur allow-from (pour limiter les inclusions à des URL spécifiques) ne bénéficie pas, en revanche, à l’heure où nous écrivons ces lignes, d’un support suffisant.",
+    "implementation": [],
+    "control": [
+      "Vérifier à l’aide d’un outil d’inspection des en-têtes HTTP la présence de X-Frame-Options avec la valeur deny ou sameorigin."
+    ],
+    "screenshotsSources": []
   }
+
 ]
