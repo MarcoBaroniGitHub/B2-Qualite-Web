@@ -55,18 +55,12 @@ const activeTab = ref('preview')
         Objectif
       </h2>
 
-      <ul class="mt-1 list-disc pl-5 space-y-2 text-sm text-zinc-300">
-        <li v-for="o in rule.objectives" :key="o">{{ o }}</li>
-      </ul>
-      <ul
-        v-if="Array.isArray(rule.objectives)"
-        class="mt-3 list-disc pl-5 space-y-2 text-sm text-zinc-300"
-      >
+      <ul v-if="Array.isArray(rule.objectives)" class="mt-3 list-disc pl-5 space-y-2 text-sm text-zinc-300">
         <li v-for="o in rule.objectives" :key="o">{{ o }}</li>
       </ul>
 
-      <p v-else class="mt-1 list-disc pl-5 space-y-2 text-sm text-zinc-300">
-        {{ rule.objective }}
+      <p v-else-if="rule.objectives" class="mt-2 text-sm text-zinc-300">
+        {{ rule.objectives }}
       </p>
     </section>
 
@@ -76,7 +70,7 @@ const activeTab = ref('preview')
         Mise en œuvre
       </h2>
 
-      <p v-if="rule.implementationIntro" class="mt-3 text-sm text-zinc-400">
+      <p v-if="rule.implementationIntro" class="mt-3 text-sm text-zinc-300">
         {{ rule.implementationIntro }}
       </p>
 
@@ -90,7 +84,9 @@ const activeTab = ref('preview')
       <h2 class="text-lg font-semibold tracking-tight text-zinc-100">
         Contrôle
       </h2>
-
+      <p v-if="rule.controlIntro" class="mt-3 text-sm text-zinc-300">
+        {{ rule.controlIntro }}
+      </p>
       <ul class="mt-3 list-disc pl-5 space-y-2 text-sm text-zinc-300">
         <li v-for="c in rule.control" :key="c">{{ c }}</li>
       </ul>
@@ -197,76 +193,76 @@ const activeTab = ref('preview')
           <!-- RENDU -->
           <div v-if="activeTab === 'preview'" class="space-y-4">
             <div class="text-sm text-zinc-400">
-              Exemple de rubrique visible dès la page d’accueil
+              Exemple de mention des droits accessible depuis chaque page
             </div>
 
             <div class="rounded-xl border border-zinc-800 bg-zinc-950 p-5">
-              <div class="flex items-center justify-between">
-                <h3 class="text-base font-semibold text-zinc-100">
-                  Quoi de neuf ?
-                </h3>
-                <span class="text-xs text-zinc-500">Actualités du site</span>
+              <div class="space-y-4">
+                <div>
+                  <h4 class="text-xs uppercase tracking-widest text-zinc-400 font-semibold">Droits d'auteur</h4>
+                  <p class="text-sm text-zinc-300 mt-2">
+                    © 2026 Opquast Lab. Tous droits réservés.
+                  </p>
+                </div>
+
+                <div class="border-t border-zinc-800 pt-4">
+                  <h4 class="text-xs uppercase tracking-widest text-zinc-400 font-semibold">Conditions de réutilisation</h4>
+                  <p class="text-sm text-zinc-300 mt-2">
+                    Les contenus de ce site sont disponibles sous
+                    <a href="#" class="text-zinc-100 underline hover:text-zinc-200">licence Creative Commons BY-SA 4.0</a>.
+                  </p>
+                </div>
+
+                <div class="border-t border-zinc-800 pt-4">
+                  <a href="#" class="text-sm text-zinc-400 hover:text-zinc-100 underline">
+                    Mentions légales
+                  </a>
+                </div>
               </div>
-
-              <ul class="mt-4 space-y-3">
-                <li class="flex items-start justify-between gap-4">
-                  <div>
-                    <div class="flex items-center gap-2">
-                      <span class="text-sm font-medium text-zinc-100">
-                        Nouvelle fonctionnalité publiée
-                      </span>
-                      <span
-                        class="text-[11px] uppercase tracking-wide rounded-full border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-zinc-200"
-                      >
-                        Nouveau
-                      </span>
-                    </div>
-                    <p class="text-sm text-zinc-400">
-                      Mise en ligne d’un nouveau service accessible depuis
-                      l’accueil.
-                    </p>
-                  </div>
-                  <span class="text-xs text-zinc-500">05/01/2026</span>
-                </li>
-
-                <li class="flex items-start justify-between gap-4">
-                  <div>
-                    <span class="text-sm font-medium text-zinc-100">
-                      Mise à jour du contenu éditorial
-                    </span>
-                    <p class="text-sm text-zinc-400">
-                      Actualisation des informations principales du site.
-                    </p>
-                  </div>
-                  <span class="text-xs text-zinc-500">03/01/2026</span>
-                </li>
-              </ul>
             </div>
           </div>
 
           <!-- CODE -->
           <div v-else>
             <pre
-              class="rounded-xl border border-zinc-800 bg-zinc-950 p-5 overflow-auto text-xs text-zinc-200"
-            ><code>&lt;section aria-labelledby="news-title"&gt;
-  &lt;h2 id="news-title"&gt;Quoi de neuf ?&lt;/h2&gt;
+              class="rounded-xl bg-zinc-950 p-5 overflow-x-auto text-sm text-zinc-100"
+            >
+<code>
+&lt;div v-if=&quot;activeTab === 'preview'&quot; class=&quot;space-y-4&quot;&gt;
+  &lt;div class=&quot;text-sm text-zinc-400&quot;&gt;
+    Exemple de mention des droits accessible depuis chaque page
+  &lt;/div&gt;
 
-  &lt;ul&gt;
-    &lt;li&gt;
-      &lt;strong&gt;Nouvelle fonctionnalité publiée&lt;/strong&gt;
-      &lt;span&gt;Nouveau&lt;/span&gt;
-      &lt;p&gt;
-        Mise en ligne d’un nouveau service accessible
-        depuis l’accueil.
-      &lt;/p&gt;
-      &lt;time datetime="2026-01-05"&gt;05/01/2026&lt;/time&gt;
-    &lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/section&gt;</code></pre>
+  &lt;div class=&quot;rounded-xl border border-zinc-800 bg-zinc-950 p-5&quot;&gt;
+    &lt;div class=&quot;space-y-4&quot;&gt;
+      &lt;div&gt;
+        &lt;h4 class=&quot;text-xs uppercase tracking-widest text-zinc-400 font-semibold&quot;&gt;Droits d'auteur&lt;/h4&gt;
+        &lt;p class=&quot;text-sm text-zinc-300 mt-2&quot;&gt;
+          © 2026 Opquast Lab. Tous droits réservés.
+        &lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;border-t border-zinc-800 pt-4&quot;&gt;
+        &lt;h4 class=&quot;text-xs uppercase tracking-widest text-zinc-400 font-semibold&quot;&gt;Conditions de réutilisation&lt;/h4&gt;
+        &lt;p class=&quot;text-sm text-zinc-300 mt-2&quot;&gt;
+          Les contenus de ce site sont disponibles sous
+          &lt;a href=&quot;#&quot; class=&quot;text-zinc-100 underline hover:text-zinc-200&quot;&gt;licence Creative Commons BY-SA 4.0&lt;/a&gt;.
+        &lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;border-t border-zinc-800 pt-4&quot;&gt;
+        &lt;a href=&quot;#&quot; class=&quot;text-sm text-zinc-400 hover:text-zinc-100 underline&quot;&gt;
+          Mentions légales
+        &lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code>
+</pre>
 
             <p class="mt-3 text-xs text-zinc-500">
-              Le principe essentiel est la visibilité immédiate des nouveautés,
-              sans navigation complexe ni recherche supplémentaire.
+              Placer ces informations dans le pied de page (footer) rend les droits accessibles depuis toutes les pages.
             </p>
           </div>
         </div>
