@@ -466,5 +466,269 @@
       "https://www.sncf-connect.com/accessibilite",
       "https://checklists.opquast.com/fr/qualite-numerique/"
     ]
+  },
+  {
+    "id": 116,
+    "title": "Chaque image porteuse d'information est dotée d'une alternative textuelle appropriée.",
+    "authors": ["Lilian LE PIVER"],
+    "path": "/rules/116",
+    "description": "Pour les utilisateurs ne pouvant pas voir les images (non-voyants, connexions lentes), l'attribut 'alt' permet de décrire le contenu ou la fonction de l'image. Une alternative appropriée doit être courte, explicite et ne pas contenir de termes redondants comme 'image de...'.",
+    "tags": [
+      "Accessibilité",
+      "Contenus",
+      "Images"
+    ],
+    "objectives": [
+      "Rendre le contenu accessible aux personnes utilisant des lecteurs d'écran.",
+      "Afficher un texte de remplacement si l'image ne charge pas.",
+      "Améliorer le référencement naturel (SEO)."
+    ],
+    "implementationIntro": "Utiliser l'attribut 'alt' sur toutes les balises <img> porteuses d'information.",
+    "implementation": [
+      "Rédiger un texte court décrivant l'information apportée par l'image.",
+      "Pour une image bouton, décrire l'action (ex: 'alt=\"Rechercher\"').",
+      "Laisser l'attribut vide (alt=\"\") pour les images purement décoratives."
+    ],
+    "control": [
+      "Inspecter le code source des images du site.",
+      "Vérifier la présence et la pertinence de l'attribut 'alt'.",
+      "S'assurer que les images purement décoratives ne polluent pas la lecture vocale."
+    ],
+    "screenshotsSources": [
+      "https://www.apple.com/fr/",
+      "https://www.service-public.fr/",
+      "https://www.amazon.fr/"
+    ]
+  },
+  {
+    "id": 117,
+    "title": "Chaque image-lien est dotée d'une alternative textuelle appropriée.",
+    "authors": ["Lilian LE PIVER"],
+    "path": "/rules/117",
+    "description": "Lorsqu'une image est le seul contenu d'un lien, son alternative textuelle doit décrire la destination ou l'action du lien plutôt que le contenu visuel de l'image. Cela permet aux utilisateurs de technologies d'assistance de comprendre où le lien les mène.",
+    "tags": [
+      "Accessibilité",
+      "Navigation",
+      "Images"
+    ],
+    "objectives": [
+      "Permettre aux utilisateurs de lecteurs d'écran de connaître la destination du lien.",
+      "Assurer que l'image remplit son rôle de commande interactive.",
+      "Éviter les intitulés de liens vides ou non explicites."
+    ],
+    "implementationIntro": "Donner à l'attribut 'alt' de l'image une valeur correspondant à l'intitulé du lien.",
+    "implementation": [
+      "Pour un logo pointant vers l'accueil, utiliser alt='Accueil' ou 'Nom de l'entreprise - Retour à l'accueil'.",
+      "Pour une icône de réseau social, utiliser alt='Suivez-nous sur Facebook'.",
+      "S'assurer que l'alternative est concise et explicite sur la fonction du lien."
+    ],
+    "control": [
+      "Identifier toutes les images cliquables qui n'ont pas de texte d'accompagnement.",
+      "Vérifier via l'inspecteur que l'attribut 'alt' ou 'aria-label' décrit la destination.",
+      "S'assurer que l'alternative n'est pas vide (alt='') pour une image-lien."
+    ],
+    "screenshotsSources": [
+      "https://www.fnac.com//",
+      "https://www.lemonde.fr/",
+      "https://www.airbnb.fr/"
+    ]
+  },
+  {
+    "id": 118,
+    "title": "Chaque bouton de formulaire est doté d’un intitulé approprié.",
+    "authors": ["Lilian LE PIVER"],
+    "path": "/rules/118",
+    "description": "Les boutons de validation ou d'action dans les formulaires doivent avoir un texte clair qui décrit l'action qui va être déclenchée. Un intitulé comme 'Envoyer' ou 'Rechercher' est préférable à un texte vague ou à une icône seule sans alternative textuelle.",
+    "tags": [
+      "Accessibilité",
+      "Formulaires",
+      "Interaction"
+    ],
+    "objectives": [
+      "Permettre à l'utilisateur de comprendre l'action déclenchée par le bouton.",
+      "Rendre les formulaires utilisables par les lecteurs d'écran.",
+      "Éviter les erreurs de manipulation lors de la soumission."
+    ],
+    "implementationIntro": "Utiliser un texte explicite à l'intérieur des balises <button> ou dans l'attribut 'value' des balises <input>.",
+    "implementation": [
+      "Remplacer les intitulés génériques par des verbes d'action précis (ex: 'Créer mon compte' au lieu de 'OK').",
+      "Pour les boutons icônes (loupe, poubelle), ajouter un attribut 'aria-label' ou un texte caché.",
+      "Vérifier que l'intitulé est visible et lisible pour tous les utilisateurs."
+    ],
+    "control": [
+      "Parcourir tous les formulaires du site.",
+      "Vérifier que chaque bouton possède un texte descriptif.",
+      "S'assurer qu'aucun bouton n'est vide ou réduit à une image sans texte alternatif."
+    ],
+    "screenshotsSources": [
+      "https://www.google.fr/",
+      "https://www.linkedin.com/",
+      "https://www.doctolib.fr/"
+    ]
+  },
+  {
+    "id": 119,
+    "title": "Les vignettes et aperçus ne sont pas des images de taille supérieure redimensionnées côté client.",
+    "authors": ["Lilian LE PIVER"],
+    "path": "/rules/119",
+    "description": "L'affichage de miniatures (thumbnails) doit utiliser des fichiers images dont les dimensions réelles sont proches des dimensions d'affichage. Il faut éviter de charger une image haute résolution pour la réduire via le code (HTML ou CSS), car cela augmente inutilement le poids de la page et le temps de chargement.",
+    "tags": [
+      "Performance",
+      "Éco-conception",
+      "Images"
+    ],
+    "objectives": [
+      "Réduire le temps de chargement des pages.",
+      "Économiser la bande passante de l'utilisateur et du serveur.",
+      "Améliorer les performances mobiles."
+    ],
+    "implementationIntro": "Générer des versions réduites des images sur le serveur avant de les envoyer au navigateur.",
+    "implementation": [
+      "Utiliser un outil de redimensionnement automatique côté serveur (CMS, CDN ou script).",
+      "Vérifier que les dimensions intrinsèques de l'image ne dépassent pas de plus de 20% les dimensions d'affichage.",
+      "Utiliser l'attribut 'srcset' pour proposer différentes tailles adaptées à l'écran."
+    ],
+    "control": [
+      "Inspecter une vignette ou un aperçu dans le navigateur.",
+      "Comparer les 'Dimensions intrinsèques' (taille réelle du fichier) avec les 'Dimensions affichées'.",
+      "Vérifier que le poids du fichier est proportionnel à sa taille d'affichage."
+    ],
+    "screenshotsSources": [
+      "https://www.amazon.fr/",
+      "https://www.youtube.com/",
+      "https://www.lequipe.fr/"
+    ]
+  },
+  {
+    "id": 120,
+    "title": "Les objets inclus sont dotés d’une alternative textuelle appropriée.",
+    "authors": ["Lilian LE PIVER"],
+    "path": "/rules/120",
+    "description": "Les objets inclus (balises <svg>, <object>, <iframe>, <canvas>) doivent posséder une alternative textuelle permettant de comprendre leur nature et leur contenu. Contrairement aux images, ces objets nécessitent souvent des descriptions plus détaillées via des balises spécifiques comme <title> ou des attributs ARIA.",
+    "tags": [
+      "Accessibilité",
+      "Contenus",
+      "Multimédia"
+    ],
+    "objectives": [
+      "Rendre les contenus complexes accessibles aux technologies d'assistance.",
+      "Identifier la fonction d'un objet inclus (ex: graphique, lecteur vidéo).",
+      "Permettre la compréhension du contenu en cas d'impossibilité de chargement de l'objet."
+    ],
+    "implementationIntro": "Utiliser les balises internes de description ou des labels d'accessibilité selon le type d'objet.",
+    "implementation": [
+      "Pour un <svg>, inclure une balise <title> à l'intérieur du code XML.",
+      "Pour une <iframe>, ajouter un attribut 'title' décrivant le contenu du cadre.",
+      "Utiliser 'aria-label' pour nommer les objets interactifs comme les lecteurs multimédias."
+    ],
+    "control": [
+      "Identifier les objets non textuels (SVG, iFrame, Object).",
+      "Vérifier la présence d'une alternative textuelle pertinente (attribut title ou aria-label).",
+      "S'assurer que l'alternative n'est pas redondante avec le texte environnant."
+    ],
+    "screenshotsSources": [
+      "https://www.service-public.gouv.fr/",
+      "https://www.lemonde.fr/videos/",
+      "https://www.service-public.gouv.fr/P10017"
+    ]
+  },
+  {
+    "id": 121,
+    "title": "Chaque contenu audio et vidéo est accompagné de sa transcription textuelle.",
+    "authors": ["Lilian LE PIVER"],
+    "path": "/rules/121",
+    "description": "Tout média temporel (vidéo ou audio) doit être accompagné d'une version texte intégrale. Cette transcription doit inclure non seulement les dialogues, mais aussi toute information sonore ou visuelle pertinente pour la compréhension de l'action.",
+    "tags": [
+      "Accessibilité",
+      "Multimédia",
+      "Contenus"
+    ],
+    "objectives": [
+      "Rendre les contenus multimédias accessibles aux personnes sourdes ou malentendantes.",
+      "Permettre l'indexation du contenu par les moteurs de recherche (SEO).",
+      "Offrir une alternative de consultation dans les environnements où le son est impossible."
+    ],
+    "implementationIntro": "Proposer un lien ou un bloc de texte structuré à proximité immédiate du média.",
+    "implementation": [
+      "Placer un lien 'Transcription' juste sous le lecteur vidéo ou audio.",
+      "Rédiger une transcription fidèle incluant le nom des locuteurs et les descriptions d'ambiance.",
+      "Utiliser un accordéon (expandable) pour masquer/afficher la transcription afin de ne pas encombrer la page."
+    ],
+    "control": [
+      "Identifier les contenus audio et vidéo présents sur le site.",
+      "Vérifier la présence d'un lien ou d'un texte correspondant à la transcription.",
+      "S'assurer que la transcription est complète et fidèle au contenu original."
+    ],
+    "screenshotsSources": [
+      "https://www.info.gouv.fr/actualite/ce-quil-faut-retenir-de-la-declaration-de-politique-generale-de-gabriel-attal",
+      "https://www.radiofrance.fr/franceculture/podcasts/lsd-la-serie-documentaire",
+      "https://www.elysee.fr/emmanuel-macron/2025/12/31/voeux-aux-francais-pour-2026"
+    ]
+  },
+  {
+    "id": 122,
+    "title": "Les vidéos comportent des sous-titres synchronisés.",
+    "authors": ["Lilian LE PIVER"],
+    "path": "/rules/122",
+    "description": "Toute vidéo pré-enregistrée contenant des informations sonores doit proposer des sous-titres synchronisés. Ces sous-titres doivent inclure les dialogues ainsi que les informations sonores significatives (bruits, musique, indications de locuteurs).",
+    "tags": [
+      "Accessibilité",
+      "Multimédia",
+      "Vidéo"
+    ],
+    "objectives": [
+      "Permettre aux personnes sourdes ou malentendantes de suivre la vidéo.",
+      "Faciliter la compréhension dans des environnements bruyants ou nécessitant le silence.",
+      "Améliorer l'apprentissage et la mémorisation du contenu."
+    ],
+    "implementationIntro": "Utiliser les fonctionnalités natives des lecteurs vidéo pour intégrer des fichiers de sous-titres (format .vtt ou .srt).",
+    "implementation": [
+      "Fournir un fichier de sous-titres synchronisé avec la piste audio.",
+      "Permettre à l'utilisateur d'activer ou de désactiver les sous-titres via le lecteur.",
+      "S'assurer que les sous-titres sont lisibles (contraste, taille de police) et ne masquent pas d'informations visuelles importantes."
+    ],
+    "control": [
+      "Lancer la lecture de chaque vidéo présente sur le site.",
+      "Vérifier la présence d'une option de sous-titrage dans le lecteur.",
+      "S'assurer que les sous-titres s'affichent correctement et sont synchronisés avec le son."
+    ],
+    "screenshotsSources": [
+      "https://www.youtube.com/watch?v=zZ4ta1pehBo",
+      "https://www.ted.com/talks/becca_heller_a_safe_pathway_to_resettlement_for_migrants_and_refugees",
+      "https://www.dailymotion.com/video/x9z37ts"
+    ]
+  },
+  {
+    "id": 123,
+    "title": "La durée des contenus vidéo ou audio est indiquée.",
+    "authors": ["Lilian LE PIVER"],
+    "path": "/rules/123",
+    "description": "L'information sur la durée totale d'un contenu multimédia doit être disponible avant la consultation. Cette indication peut figurer à proximité du bouton de lecture, dans la description du média ou directement sur la vignette d'aperçu.",
+    "tags": [
+      "Contenus",
+      "Multimédia",
+      "UX"
+    ],
+    "objectives": [
+      "Permettre à l'utilisateur d'anticiper le temps de consultation.",
+      "Améliorer le confort de navigation et la gestion du temps.",
+      "Éviter la frustration liée au lancement d'un média trop long par rapport au temps disponible."
+    ],
+    "implementationIntro": "Afficher la durée de manière explicite et lisible à proximité du lecteur ou du lien de consultation.",
+    "implementation": [
+      "Inscrire la durée sur la vignette (thumbnail) de la vidéo (ex: '03:45').",
+      "Ajouter une mention textuelle dans la description du média (ex: 'Durée : 12 minutes').",
+      "Utiliser des formats standards (hh:mm:ss) pour une compréhension universelle."
+    ],
+    "control": [
+      "Identifier les contenus audio et vidéo du site.",
+      "Vérifier que la durée est visible avant de cliquer sur 'Play'.",
+      "S'assurer que l'information est présente même si le JavaScript est désactivé si possible."
+    ],
+    "screenshotsSources": [
+      "https://www.youtube.com/watch?v=0DH4_hkK798",
+      "https://podcasts.apple.com/fr/podcast/legend/id1691740320",
+      "https://www.ted.com/talks/rebecca_okamoto_how_to_introduce_yourself_and_get_hired"
+    ]
   }
 ]
