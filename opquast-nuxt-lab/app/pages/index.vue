@@ -1,10 +1,5 @@
 <script setup>
 import rules from '~/data/rules.json'
-import { computed } from 'vue'
-
-const sortedRules = computed(() => {
-  return [...rules].sort((a, b) => a.id - b.id)
-})
 </script>
 
 <template>
@@ -26,7 +21,7 @@ const sortedRules = computed(() => {
 
     <div class="grid gap-3">
       <NuxtLink
-        v-for="r in sortedRules"
+        v-for="r in rules"
         :key="r.id"
         :to="r.path"
         class="group rounded-xl border border-zinc-800 bg-zinc-900/40 px-5 py-4 hover:bg-zinc-900 transition"
